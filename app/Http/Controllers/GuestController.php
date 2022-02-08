@@ -31,9 +31,9 @@ class GuestController extends Controller
             'author'=> 'string|max:255',
             'content'=> 'required|',
             'relase_date'=> 'required|date',
+            'tags' => 'nullable'
         ]);
         $data['author'] = Auth::user() -> name;
-
         
 
         $post = Post::make($data);
@@ -43,8 +43,11 @@ class GuestController extends Controller
         $post -> category() -> associate($category);
         $post -> save();
 
-        $tags = Tag::findOrFail($request -> get('tags'));
-        $post -> tags() -> attach($tags);
+
+        if (array_key_exists('tags', $data)) {
+            $tags = Tag::findOrFail($request -> get('tags'));
+            $post -> tags() -> attach($tags);
+        }
 
         $post -> save();
 
