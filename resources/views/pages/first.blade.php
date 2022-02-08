@@ -63,6 +63,7 @@
             <th>Author</th>
             <th>Category</th>
             {{-- <th>Likes</th> --}}
+            <th>Tags</th>
             <th>Data</th>
         </tr>
         @foreach ($posts as $post)
@@ -72,6 +73,11 @@
                 <td>{{$post -> author}}</td>
                 <td>{{$post -> category -> name}}</td>
                 {{-- <td>{{$post -> likes}}</td> --}}
+                <td>
+                    @foreach ($post -> tags  as $tag)
+                        {{$tag -> name}} <br>
+                    @endforeach
+                </td>
                 <td>{{$post -> created_at}}</td>
 
             </tr>
@@ -107,8 +113,6 @@
         <input type="text" name="subtitle" placeholder="subtitle"> <br>
         <label for="content">Content:</label>
         <input type="text" name="content" placeholder="content"> <br>
-        <label for="author">Author:</label>
-        <input type="text" name="author" placeholder="author"> <br>
         <label for="title">Releade Date:</label>
         <input type="date" name="relase_date" placeholder="Releade Date"> <br>
         <select name="category_id">
@@ -116,6 +120,11 @@
                 <option value="{{$category -> id}}">{{$category -> name}}</option>
             @endforeach
         </select>
+        <h4>Tags</h4>
+        @foreach ($tags as $tag)
+        <input type="checkbox" name="tags[]" value="{{$tag -> id}}"> {{$tag -> name}} <br>
+        @endforeach
+        
         <input type="submit" value="CREATE">
 
 
