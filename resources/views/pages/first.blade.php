@@ -45,7 +45,7 @@
     @else
 
     <h1>Lista posts:</h1>
-    <ul>
+    {{-- <ul>
         @foreach ($posts as $post)
             <li>
                 <b>
@@ -55,10 +55,31 @@
                 </b>
             </li>
         @endforeach
-    </ul>
+    </ul> --}}
+    <table border="1">
+        <tr>
+            <th>Title</th>
+            <th>Text</th>
+            <th>Author</th>
+            <th>Category</th>
+            {{-- <th>Likes</th> --}}
+            <th>Data</th>
+        </tr>
+        @foreach ($posts as $post)
+            <tr>
+                <td>{{$post -> title}}</td>
+                <td>{{$post -> content}}</td>
+                <td>{{$post -> author}}</td>
+                <td>{{$post -> category -> name}}</td>
+                {{-- <td>{{$post -> likes}}</td> --}}
+                <td>{{$post -> created_at}}</td>
+
+            </tr>
+        @endforeach
+    </table>
 
     <h1>
-        Crea un nuovo film
+        Crea un nuovo post
     </h1>
 
     
@@ -75,9 +96,9 @@
         </div>
     @endif
 
-    <form action="{{route('store')}}" method="post">
+    <form action="{{route('store')}}" method="POST">
     
-        @method("post")
+        @method("POST")
         @csrf
         
         <label for="title">Title:</label>
@@ -90,6 +111,11 @@
         <input type="text" name="author" placeholder="author"> <br>
         <label for="title">Releade Date:</label>
         <input type="date" name="relase_date" placeholder="Releade Date"> <br>
+        <select name="category_id">
+            @foreach ($categories as $category)
+                <option value="{{$category -> id}}">{{$category -> name}}</option>
+            @endforeach
+        </select>
         <input type="submit" value="CREATE">
 
 

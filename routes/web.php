@@ -26,4 +26,4 @@ Route::post('/login', 'Auth\LoginController@login') ->name('login');
 
 Route::get('/logout', 'Auth\LoginController@logout') ->name('logout');
 
-Route::post('/post/store', 'GuestController@store') -> name('store');
+Route::post('/store', 'GuestController@store') -> name('store');
