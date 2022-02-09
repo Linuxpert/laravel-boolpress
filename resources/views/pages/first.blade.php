@@ -82,6 +82,7 @@
                 <td>{{$post -> created_at}}</td>
                 <td>
                     <a class="btn btn-secondary" href="{{route('post.edit', $post -> id)}}">EDIT</a>
+                    <a class="btn btn-danger" href="{{route('post.delete', $post -> id)}}">DELETE</a>
                 </td>
 
             </tr>
