@@ -5,7 +5,7 @@
     <a  class="btn btn-secondary" href="{{route('logout')}}">LOGOUT</a>
 
     <h1>Update Post</h1>
-    <form action="#" method="POST">
+    <form action="{{route('post.update', $post -> id)}}" method="POST">
     
         @method("POST")
         @csrf
@@ -41,7 +41,7 @@
             > {{$tag -> name}} <br>
         @endforeach
     
-        <input type="submit" value="CREATE"> <br>
+        <input type="submit" value="UPDATE"> <br>
 
         <a class="btn btn-secondary" href="{{route('home')}}">Back home</a>
 

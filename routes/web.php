@@ -25,6 +25,7 @@ Route::post('/register', 'Auth\RegisterController@register') -> name('register')
 Route::post('/login', 'Auth\LoginController@login') ->name('login');
 
 Route::get('/post/edit/{id}', 'GuestController@edit') -> name('post.edit');
+Route::post('/post/update/{id}', 'GuestController@update') -> name('post.update');
 
 Route::get('/logout', 'Auth\LoginController@logout') ->name('logout');
 
