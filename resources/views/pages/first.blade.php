@@ -65,6 +65,7 @@
             {{-- <th>Likes</th> --}}
             <th>Tags</th>
             <th>Data</th>
+            <th>Action</th>
         </tr>
         @foreach ($posts as $post)
             <tr>
@@ -79,6 +80,9 @@
                     @endforeach
                 </td>
                 <td>{{$post -> created_at}}</td>
+                <td>
+                    <a class="btn btn-secondary" href="{{route('post.edit', $post -> id)}}">EDIT</a>
+                </td>
 
             </tr>
         @endforeach

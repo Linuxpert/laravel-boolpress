@@ -53,4 +53,15 @@ class GuestController extends Controller
 
         return redirect() -> route('home');
     }
+
+    public function edit($id){
+        $posts= Post::orderBy('created_at', 'desc') -> get();
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        $post = Post::findOrFail($id);
+
+
+        return view('pages.edit', compact('posts', 'categories', 'tags', 'post'));
+    }
 }
